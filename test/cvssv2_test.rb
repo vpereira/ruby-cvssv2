@@ -18,12 +18,7 @@ class Cvssv2Test < Minitest::Test
     refute @cvssv2.valid? == false
   end
 
-  def test_vector_should_not_be_nil
-    refute_nil @cvssv2.parse
-  end
-
   def test_av
-    @cvssv2.parse
     assert @cvssv2.av,"N"
   end
 end
@@ -38,12 +33,7 @@ class Cvssv2Test2 < Minitest::Test
     refute @cvssv2.valid? == true
   end
 
-  def test_parse_should_return_nil
-    assert_nil @cvssv2.parse
-  end
-
   def test_av
-    @cvssv2.parse
     assert_nil @cvssv2.av
   end
 end
@@ -63,11 +53,9 @@ class Cvss2Test3 < MiniTest::Test
   end
 
   def test_impact
-    @cvssv2.parse
     assert_equal 6.44,@cvssv2.impact
   end
   def test_exploitability
-    @cvssv2.parse
     assert_in_delta 8.60,@cvssv2.exploitability,0.05
   end
 
@@ -76,7 +64,6 @@ end
 class ScoreTest < MiniTest::Test
   def setup
     @cvssv2 = Cvssv2::Cvssv2.new "(AV:N/AC:M/Au:N/C:P/I:P/A:P/E:POC/RL:TF/RC:UR/CDP:L/TD:M/CR:M/IR:ND/AR:ND)"
-    @cvssv2.parse
   end
 
   def test_access_vector

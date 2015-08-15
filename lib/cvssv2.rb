@@ -91,8 +91,10 @@ module Cvssv2
     attr_reader :av,:ac,:au,:c,:i,:a,:e,:rl,:rc,:cdp,:td,:cr,:ir,:ar
 
     VECTOR_REGEXP = /\(AV:([LAN])\/AC:([HML])\/Au:([NSM])\/C:([NPC])\/I:([NPC])\/A:([NPC])(?:\/E:(ND|U|POC|F|H)\/RL:(ND|OF|TF|W|U)\/RC:(ND|UC|UR|C)(?:\/CDP:(N|L|LM|MH|H|ND)\/TD:(N|L|M|H|ND)\/CR:(L|M|H|ND)\/IR:(L|M|H|ND)\/AR:(L|M|H|ND))?)?\)/
+
     def initialize(v=nil)
       @vector = v
+      parse if valid?
     end
 
     def valid?
@@ -101,7 +103,7 @@ module Cvssv2
 
     def parse
       @av,@ac,@au,@c,@i,@a,@e,@rl,@rc, \
-      @cdp,@td,@cr,@ir,@ar = @vector.scan(VECTOR_REGEXP).flatten if valid?
+      @cdp,@td,@cr,@ir,@ar = @vector.scan(VECTOR_REGEXP).flatten
     end
 
     def impact
