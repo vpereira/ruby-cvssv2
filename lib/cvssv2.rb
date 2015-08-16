@@ -66,8 +66,8 @@ module Cvssv2
     end
 
     protected
-    def print_formatted_float(data)
-      sprintf("%.2f",data).to_f
+    def print_formatted_float(data,precision=2)
+      sprintf("%.#{precision}f",data).to_f
     end
   end
 end
