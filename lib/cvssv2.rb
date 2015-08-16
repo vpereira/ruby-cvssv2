@@ -2,22 +2,11 @@ require "cvssv2/version"
 require "cvssv2/access_vector"
 require "cvssv2/access_complexity"
 require "cvssv2/authentication"
+require "cvssv2/confidentiality_impact"
+
+
 
 module Cvssv2
-
-  class ConfidentialityImpact
-    def self.score(c)
-      case c
-      when 'P'
-        0.275
-      when 'C'
-        0.660
-      else # 'N' included
-        0
-      end
-    end
-  end
-
   class IntegrityImpact
     def self.score(i)
       case i
