@@ -131,11 +131,13 @@ module Cvssv2
     end
 
     def impact
-      sprintf("%.2f",10.41 * (1.0 - (1.0 - confidentiality_impact) * (1.0 - integrity_impact) * (1.0- availability_impact))).to_f
+      sprintf("%.2f",10.41 * (1.0 - (1.0 - confidentiality_impact) *
+        (1.0 - integrity_impact) * (1.0- availability_impact))).to_f
     end
 
     def exploitability
-      sprintf("%.2f",20 * access_complexity * authentication * confidentiality).to_f
+      sprintf("%.2f",20 * access_complexity * authentication *
+        confidentiality).to_f
     end
 
     def base_score
