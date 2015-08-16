@@ -1,37 +1,8 @@
 require "cvssv2/version"
+require "cvssv2/access_vector"
+require "cvssv2/access_complexity"
 
 module Cvssv2
-
-  class AccessVector
-    def self.score(av)
-      case av
-      when 'L'
-        0.395
-      when 'A'
-        0.646
-      when 'N'
-        1
-      else
-        0
-      end
-    end
-  end
-
-  class AccessComplexity
-    def self.score(ac)
-      case ac
-      when 'H'
-        0.35
-      when 'M'
-        0.61
-      when 'L'
-        0.71
-      else
-        0
-      end
-    end
-  end
-
   class Authentication
     def self.score(au)
       case au
