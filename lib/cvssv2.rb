@@ -4,23 +4,9 @@ require "cvssv2/access_complexity"
 require "cvssv2/authentication"
 require "cvssv2/confidentiality_impact"
 require "cvssv2/integrity_impact"
-
+require "cvssv2/availability_impact"
 
 module Cvssv2
-
-  class AvailabilityImpact
-    def self.score(a)
-      case a
-      when 'P'
-        0.275
-      when 'C'
-        0.660
-      else # 'N' included
-        0
-      end
-    end
-  end
-
   class Cvssv2
     attr_accessor :vector
     attr_reader :av,:ac,:au,:c,:i,:a,:e,:rl,:rc,:cdp,:td,:cr,:ir,:ar
