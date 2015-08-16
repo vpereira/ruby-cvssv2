@@ -18,8 +18,11 @@ class Cvssv2Test < Minitest::Test
     refute @cvssv2.valid? == false
   end
 
-  def test_av
-    assert @cvssv2.av,"N"
+  def test_parsing_results
+    assert_equal @cvssv2.av,"N"
+    assert_equal @cvssv2.ac,"M"
+    assert_equal @cvssv2.au,"N"
+    assert_equal @cvssv2.c,"P"
   end
 end
 

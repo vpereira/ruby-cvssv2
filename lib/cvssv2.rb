@@ -52,18 +52,22 @@ module Cvssv2
     end
 
     def impact
-      sprintf("%.2f",10.41 * (1.0 - (1.0 - confidentiality_impact) *
-        (1.0 - integrity_impact) * (1.0- availability_impact))).to_f
+      print_formatted_float(10.41 * (1.0 - (1.0 - confidentiality_impact) * \
+        (1.0 - integrity_impact) * (1.0- availability_impact)))
     end
 
     def exploitability
-      sprintf("%.2f",20 * access_complexity * authentication *
-        confidentiality).to_f
+      print_formatted_float(20 * access_complexity * \
+        authentication * confidentiality )
     end
 
     def base_score
 
     end
 
+    protected
+    def print_formatted_float(data)
+      sprintf("%.2f",data).to_f
+    end
   end
 end
