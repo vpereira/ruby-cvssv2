@@ -5,7 +5,7 @@ require "cvssv2/authentication"
 require "cvssv2/confidentiality_impact"
 require "cvssv2/integrity_impact"
 require "cvssv2/availability_impact"
-
+require "cvssv2/temporal_exploitability"
 module Cvssv2
   class Cvssv2
     attr_accessor :vector
@@ -61,8 +61,16 @@ module Cvssv2
         authentication * confidentiality )
     end
 
-    def base_score
+    def f_impact
+      impact == 0 ? 0.0 : 1.176
+    end
 
+    def base_score
+      print_formatted_float((0.6 * impact + 0.4*exploitability-1.5) * f_impact)
+    end
+
+    def temporal_exploitability
+      TemporalExploitability.score(@e)
     end
 
     protected

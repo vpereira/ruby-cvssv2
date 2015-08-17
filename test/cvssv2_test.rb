@@ -58,8 +58,13 @@ class Cvss2Test3 < MiniTest::Test
   def test_impact
     assert_equal 6.44,@cvssv2.impact
   end
+
   def test_exploitability
     assert_in_delta 8.60,@cvssv2.exploitability,0.05
+  end
+
+  def test_base_score
+    assert_in_delta 6.80,@cvssv2.base_score,0.05
   end
 
 end
